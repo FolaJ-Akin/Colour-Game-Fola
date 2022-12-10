@@ -61,10 +61,12 @@ export default function OpenProcessingSpeech(): JSX.Element {
       console.log({ spokenString });
       if (spokenString.toLowerCase() === chosenColourStyle.color) {
         setCount(count + 1);
+      }else{
+        setCount(count)
       }
     }
     checkAttempt(transcript);
-  }, [transcript]);
+  }, [count]);
 
   return (
     <div>
