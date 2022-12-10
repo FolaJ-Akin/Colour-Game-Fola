@@ -40,10 +40,11 @@ export default function OpenProcessingSpeech(): JSX.Element {
 
   SpeechRecognition.startListening({ language: "en", continuous: false });
 
-  function getNewColour() {
+  useEffect(() => {
     const newWord = colours[Math.floor(Math.random() * colours.length)];
     setNewColour(newWord);
-  }
+  });
+
   function getColourFill(current: string) {
     const index = colours.indexOf(current);
     const copy = colours;
@@ -61,8 +62,8 @@ export default function OpenProcessingSpeech(): JSX.Element {
       console.log({ spokenString });
       if (spokenString.toLowerCase() === chosenColourStyle.color) {
         setCount(count + 1);
-      }else{
-        setCount(count)
+      } else {
+        setCount(count);
       }
     }
     checkAttempt(transcript);
@@ -72,7 +73,7 @@ export default function OpenProcessingSpeech(): JSX.Element {
     <div>
       Transcipt: {transcript} Count:{count}
       <h1 style={chosenColourStyle}>{currentColour}</h1>
-      <button onClick={getNewColour}>Change Colour</button>
+      {/* <button onClick={getNewColour}>Change Colour</button> */}
     </div>
   );
 }
