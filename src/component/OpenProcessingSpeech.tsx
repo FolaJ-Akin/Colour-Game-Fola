@@ -14,6 +14,7 @@ export default function OpenProcessingSpeech(): JSX.Element {
     "silver",
     "yellow",
     "gold",
+    "pink",
     "brown",
   ];
   const word = colours[Math.floor(Math.random() * colours.length)];
