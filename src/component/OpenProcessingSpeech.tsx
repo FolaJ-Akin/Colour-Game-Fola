@@ -1,40 +1,33 @@
-import  React from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import React from "react";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
-export default function OpenProcessingSpeech():JSX.Element {
+export default function OpenProcessingSpeech(): JSX.Element {
+  if (!window.speechSynthesis) {
+    console.error("Web Speech API not supported");
+  }
 
-    if(!window.speechSynthesis){
-      console.error('Web Speech API not supported');
-  
-    }
+  const {
+    transcript,
+    interimTranscript,
+    finalTranscript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+    isMicrophoneAvailable,
+  } = useSpeechRecognition();
 
-    const {
-        transcript,
-        interimTranscript,
-        finalTranscript,
-        listening,
-        resetTranscript,
-        browserSupportsSpeechRecognition,
-        isMicrophoneAvailable,
-      } = useSpeechRecognition();
+  //init the speechRecognition engine
+  // const recognition =  SpeechRecognition.getRecognition();
 
-    //init the speechRecognition engine
-    // const recognition =  SpeechRecognition.getRecognition();
+  // Start listening for speech
+  SpeechRecognition.startListening();
 
-
-    
-    // Start listening for speech
-    SpeechRecognition.startListening();
-
-
-
-  return(
+  return (
     <>
       Transcipt: {transcript}
-
       Interim Transcipt: {interimTranscript}
-
-      
     </>
-  )
+  );
 }

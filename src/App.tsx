@@ -1,15 +1,12 @@
-import React from "react"
-import OpenProcessingSpeech from "./component/OpenProcessingSpeech"
+import React from "react";
+import OpenProcessingSpeech from "./component/OpenProcessingSpeech";
 
-export default function App():JSX.Element{
-
-
-
+export default function App(): JSX.Element {
   return (
     <div>
       <div className="Content">
-        <OpenProcessingSpeech/>
+        <OpenProcessingSpeech />
       </div>
     </div>
-  )
+  );
 }
