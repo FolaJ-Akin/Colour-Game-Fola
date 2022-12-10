@@ -43,7 +43,7 @@ export default function OpenProcessingSpeech(): JSX.Element {
   useEffect(() => {
     const newWord = colours[Math.floor(Math.random() * colours.length)];
     setNewColour(newWord);
-  });
+  },[]);
 
   function getColourFill(current: string) {
     const index = colours.indexOf(current);
