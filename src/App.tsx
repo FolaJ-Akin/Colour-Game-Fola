@@ -1,7 +1,6 @@
 import React from "react"
-import ReactSpeechRecognition from "./component/ReactSpeechRecognition"
-import CloudTextToSpeech from "./component/CloudTextToSpeech"
-import TestPage from "./component/TestPage"
+import OpenProcessingSpeech from "./component/OpenProcessingSpeech"
+
 export default function App():JSX.Element{
 
 
@@ -9,7 +8,7 @@ export default function App():JSX.Element{
   return (
     <div>
       <div className="Content">
-        <ReactSpeechRecognition/>
+        <OpenProcessingSpeech/>
       </div>
     </div>
   )
