@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -11,7 +11,6 @@ export default function OpenProcessingSpeech(): JSX.Element {
     "green",
     "purple",
     "red",
-    "silver",
     "yellow",
     "gold",
     "pink",
@@ -19,10 +18,11 @@ export default function OpenProcessingSpeech(): JSX.Element {
   ];
   const word = colours[Math.floor(Math.random() * colours.length)];
   const [currentColour, setNewColour] = useState(word);
+  const [count, setCount] = useState(0);
 
   const {
     transcript,
-    interimTranscript,
+    // interimTranscript,
     // finalTranscript,
     // listening,
     // resetTranscript,
@@ -44,12 +44,32 @@ export default function OpenProcessingSpeech(): JSX.Element {
     const newWord = colours[Math.floor(Math.random() * colours.length)];
     setNewColour(newWord);
   }
+  function getColourFill(current: string) {
+    const index = colours.indexOf(current);
+    const copy = colours;
+    copy.splice(index, 1);
+    const colourFill = copy[Math.floor(Math.random() * colours.length)];
+    return colourFill;
+  }
+
+  const chosenColourStyle = {
+    color: getColourFill(currentColour),
+    fontSize: 250,
+  };
+  useEffect(() => {
+    function checkAttempt(spokenString: string) {
+      console.log({ spokenString });
+      if (spokenString.toLowerCase() === chosenColourStyle.color) {
+        setCount(count + 1);
+      }
+    }
+    checkAttempt(transcript);
+  }, [transcript]);
 
   return (
     <div>
-      Transcipt: {transcript}
-      Interim Transcipt: {interimTranscript}
-      <h1>{currentColour}</h1>
+      Transcipt: {transcript} Count:{count}
+      <h1 style={chosenColourStyle}>{currentColour}</h1>
       <button onClick={getNewColour}>Change Colour</button>
     </div>
   );
