@@ -1,6 +1,6 @@
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+// import SpeechRecognition, {
+//   useSpeechRecognition,
+// } from "react-speech-recognition";
 
 export default function ReactSpeechRecognition(): JSX.Element {
   // const {

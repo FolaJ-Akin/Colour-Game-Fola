@@ -11,11 +11,11 @@ export default function OpenProcessingSpeech(): JSX.Element {
   const {
     transcript,
     interimTranscript,
-    finalTranscript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-    isMicrophoneAvailable,
+    // finalTranscript,
+    // listening,
+    // resetTranscript,
+    // browserSupportsSpeechRecognition,
+    // isMicrophoneAvailable,
   } = useSpeechRecognition();
 
   //init the speechRecognition engine
